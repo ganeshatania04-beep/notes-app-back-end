@@ -1,13 +1,13 @@
-const { NotePayloadSchema } = require("./schema");
+const InvariantError = require('../../exceptions/InvariantError');
+const { NotePayloadSchema } = require('./schema');
 
-const NotesValidation ={
-    validateNotePayload: (payload) => {
-        const validateNotePayload = NotePayloadSchema.validate(payload);
-        if (validationReasult.error){
-            throw new Error(validationResult.error.message);
-        }
-
-    },
+const NotesValidator = {
+  validateNotePayload: (payload) => {
+    const validationResult = NotePayloadSchema.validate(payload);
+    if (validationResult.error) {
+      throw new InvariantError(validationResult.error.message);
+    }
+  },
 };
 
-mpdule.export = NotesValidator;
+module.exports = NotesValidator;

@@ -1,2 +1,6 @@
 node_modules
 notes-api-webserver.pam
+node_modules
+notes-api-web-server.pem
+.env
+.prod.env

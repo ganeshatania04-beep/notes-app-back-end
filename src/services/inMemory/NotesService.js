@@ -9,7 +9,7 @@ class NotesService {
 
   addNote({ title, body, tags }) {
     const id = nanoid(16);
-    const createdAt = new Date().toISOString();  // ← TAMBAHKAN BARIS INI
+    const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
 
     const newNote = {
@@ -39,7 +39,7 @@ class NotesService {
     return note;
   }
 
-  editNoteById(id, { title, tags, body }) {
+  editNoteById(id, { title, body, tags }) {
     const index = this._notes.findIndex((note) => note.id === id);
 
     if (index === -1) {
@@ -59,11 +59,9 @@ class NotesService {
 
   deleteNoteById(id) {
     const index = this._notes.findIndex((note) => note.id === id);
-
     if (index === -1) {
       throw new NotFoundError('Catatan gagal dihapus. Id tidak ditemukan');
     }
-
     this._notes.splice(index, 1);
   }
 }
